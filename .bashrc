@@ -31,7 +31,7 @@ unset rc
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ {\1}/'
 }
-PS1="\e[01;32m(\w)\[\e[91m\]\$(parse_git_branch)\[\e[01;00m\]\[\e[1m\] > "
+PS1="\[\e[1;32m\](\w)\[\e[91m\$(parse_git_branch)\] \[\e[00m\]\[\e[1m\]> \[\e[00m\]"
 # PS1="\[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
 # PS1='$(basename "$PWD" |head -c1)\$ '
 # PS1='\[\e[1m\][\u@\h \W]\$ ' #bash default
@@ -42,6 +42,7 @@ bind 'set show-all-if-ambiguous on'
 # bind 'TAB:menu-complete'
 
 # Some other aliases
+alias cls='clear'
 alias cat='bat --style=plain --paging=never' # In debian derivatives is batcat, in other it's just bat
 alias ls='eza --group-directories-first'
 alias tree='eza -T'
